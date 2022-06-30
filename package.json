@@ -1,0 +1,42 @@
+{
+  "name": "hilltop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon src/index.js",
+    "migrate": "npx knex migrate:latest --knexfile ./src/database/knexfile.js",
+    "make-migration": "npx knex migrate:make init --migrations-directory ./src/database/migrations",
+    "seed": "npx knex seed:run --knexfile ./src/db/knexfile.js",
+    "make-seed": "npx knex seed:make new-seed --knexfile ./src/database/knexfile.js",
+    "down": "npx knex migrate:down --knexfile ./src/database/knexfile.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zechariah-dev/Hilltop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zechariah-dev/Hilltop/issues"
+  },
+  "homepage": "https://github.com/Zechariah-dev/Hilltop#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^2.1.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "objection": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
