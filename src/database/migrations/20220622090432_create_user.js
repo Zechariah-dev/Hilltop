@@ -12,17 +12,7 @@ exports.up = function (knex) {
     table.string("contact");
     table.date("hireDate");
     table.enu("gender", ["male", "female"]);
-    table.enu("role", [
-      "user",
-      "waiter",
-      "waitress",
-      "chef",
-      "driver",
-      "manager",
-      "security",
-      "host",
-      "hostess",
-    ]);
+    table.enu("role", ["user", "waiter", "chef", "driver", "manager"]);
     table.integer("restuarant").nullable();
     table.datetime("createdAt", { precision: 6 }).defaultTo(knex.fn.now(6));
     table.datetime("updatedAt", { precision: 6 }).defaultTo(knex.fn.now(6));

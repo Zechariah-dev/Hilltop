@@ -37,10 +37,6 @@ class User extends Model {
       },
     };
   }
-
-  static get relationMappings() {
-    return {};
-  }
 }
 
 module.exports = User;
