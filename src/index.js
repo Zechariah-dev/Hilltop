@@ -1,25 +1,31 @@
-const express = require("express");
-const cors = require("cors");
-const compression = require("compression");
-const morgan = require("morgan");
-const config = require("./config");
-require("./database");
+const express = require("express")
+const cors = require("cors")
+const compression = require("compression")
+const morgan = require("morgan")
 
-const app = express();
+const errorHandler = require("./validation/errorHandler")
+const logger = require("./config/logger")
+require("./database")
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cors());
-app.use(compression());
-app.use(morgan("dev"));
+const app = express()
 
-require("./router")(app);
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+app.use(cors())
+app.use(compression())
+app.use(morgan("dev"))
 
-app.use((err, req, res, next) => {
-  console.log(err);
-  // res.status(500).json({ message: "internal server error" });
-});
+app.use(function (req, res, next) {
+    req.log = logger
+    next()
+})
 
-app.listen(config.port, () => {
-  console.log("server listening ");
-});
+require("./router")(app)
+
+app.use(errorHandler)
+
+process.on("uncaughtException", (e) => {
+    console.log(e)
+})
+
+module.exports = app

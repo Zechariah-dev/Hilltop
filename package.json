@@ -4,11 +4,11 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start:dev": "nodemon src/index.js",
+        "test": "jest --watch",
+        "start:dev": "nodemon src/server.js",
         "migrate": "npx knex migrate:latest --knexfile ./src/database/knexfile.js",
         "make-migration": "npx knex migrate:make init --migrations-directory ./src/database/migrations",
-        "seed": "npx knex seed:run --knexfile ./src/db/knexfile.js",
+        "seed": "npx knex seed:run --knexfile ./src/database/knexfile.js",
         "make-seed": "npx knex seed:make new-seed --knexfile ./src/database/knexfile.js",
         "down": "npx knex migrate:down --knexfile ./src/database/knexfile.js",
         "lint:check": "eslint .",
@@ -29,19 +29,25 @@
         "bcrypt": "^5.0.1",
         "compression": "^1.7.4",
         "cors": "^2.8.5",
+        "dayjs": "^1.11.4",
         "dotenv": "^16.0.1",
         "express": "^4.18.1",
         "express-validator": "^6.14.2",
         "jsonwebtoken": "^8.5.1",
-        "knex": "^2.1.0",
+        "knex": "^2.2.0",
         "morgan": "^1.10.0",
         "mysql": "^2.18.1",
-        "objection": "^3.0.1"
+        "objection": "^3.0.1",
+        "objection-password": "^3.0.0",
+        "pino": "^8.3.0",
+        "pino-pretty": "^8.1.0"
     },
     "devDependencies": {
         "eslint": "^8.19.0",
         "eslint-config-prettier": "^8.5.0",
+        "jest": "^28.1.3",
         "nodemon": "^2.0.16",
-        "prettier": "^2.7.1"
+        "prettier": "^2.7.1",
+        "supertest": "^6.2.4"
     }
 }

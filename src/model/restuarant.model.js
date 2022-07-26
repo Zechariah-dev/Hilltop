@@ -1,8 +1,9 @@
 const { Model } = require("objection");
+const User = require("./user.model");
 
-class User extends Model {
+class Restuarant extends Model {
   static get tableName() {
-    return "users";
+    return "restuarants";
   }
 
   static get idColumn() {
@@ -21,22 +22,29 @@ class User extends Model {
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["email", "contact"],
+      required: [],
       properties: {
         id: { type: "integer" },
-        email: { type: "string" },
-        firstName: { type: "string" },
-        lastName: { type: "string" },
-        password: { type: "string" },
-        contact: { type: "string" },
-        hireDate: { type: "string" },
-        restuarant: { type: "integer" },
-        role: { type: "string" },
+        ownerId: { type: "integer" },
+        name: { type: "string" },
         created_at: { type: "string" },
         updated_at: { type: "string" },
       },
     };
   }
+
+  static get relationMappings() {
+    return {
+      users: {
+        relation: Model.HasOneRelation,
+        modelClass: User,
+        join: {
+          from: "restuarants.ownerId",
+          to: "users.id",
+        },
+      },
+    };
+  }
 }
 
-module.exports = User;
+module.exports = Restuarant;
