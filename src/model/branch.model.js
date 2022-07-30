@@ -12,12 +12,12 @@ class Branch extends Model {
     }
 
     $beforeInsert() {
-        this.createdAt = new Date()
-        this.updatedAt = new Date()
+        this.created_at = new Date()
+        this.updated_at = new Date()
     }
 
     $beforeUpdate() {
-        this.updatedAt = new Date()
+        this.updated_at = new Date()
     }
 
     static get jsonSchema() {
@@ -28,7 +28,7 @@ class Branch extends Model {
                 id: { type: "integer" },
                 addess: { type: "string" },
                 manager: { type: "integer" },
-                restuarant: { type: "integer" },
+                restuarantId: { type: "integer" },
                 created_at: { type: "string" },
                 updated_at: { type: "string" },
             },
@@ -37,14 +37,6 @@ class Branch extends Model {
 
     static get relationMappings() {
         return {
-            restuarants: {
-                relation: Model.HasOneRelation,
-                modelClass: Restuarant,
-                join: {
-                    from: "branches.restuarant",
-                    to: "restuarants.id",
-                },
-            },
             managers: {
                 relation: Model.HasOneRelation,
                 modelClass: User,
@@ -61,6 +53,14 @@ class Branch extends Model {
                 join: {
                     from: "branches.manager",
                     to: "users.id",
+                },
+            },
+            restuarant: {
+                relation: Model.BelongsToOneRelation,
+                modelClass: Restuarant,
+                join: {
+                    from: "branches.restuarantId",
+                    to: "restuarants.id",
                 },
             },
         }

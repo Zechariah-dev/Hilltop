@@ -8,8 +8,8 @@ exports.up = function (knex) {
         table.string("address")
         table.integer("restuarantId").notNullable()
         table.integer("manager").notNullable()
-        table.datetime("createdAt", { precision: 6 }).defaultTo(knex.fn.now(6))
-        table.datetime("updatedAt", { precision: 6 }).defaultTo(knex.fn.now(6))
+        table.datetime("created_at", { precision: 6 }).defaultTo(knex.fn.now(6))
+        table.datetime("updated_at", { precision: 6 }).defaultTo(knex.fn.now(6))
     })
 }
 

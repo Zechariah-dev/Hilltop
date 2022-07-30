@@ -12,12 +12,12 @@ class Restuarant extends Model {
     }
 
     $beforeInsert() {
-        this.createdAt = new Date()
-        this.updatedAt = new Date()
+        this.created_at = new Date()
+        this.updated_at = new Date()
     }
 
     $beforeUpdate() {
-        this.updatedAt = new Date()
+        this.updated_at = new Date()
     }
 
     static get jsonSchema() {
