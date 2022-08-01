@@ -5,10 +5,12 @@
 exports.up = function (knex) {
     return knex.schema.createTable("menus", (table) => {
         table.increments("id")
-        table.integer("branch")
-        table.json("list")
-        table.datetime("createdAt", { precision: 6 }).defaultTo(knex.fn.now(6))
-        table.datetime("updatedAt", { precision: 6 }).defaultTo(knex.fn.now(6))
+        table.string("name")
+        table.integer("branchId")
+        table.json("menulist")
+        table.enu("status", ["active", "inactive"]).defaultTo("active")
+        table.datetime("created_at", { precision: 6 }).defaultTo(knex.fn.now(6))
+        table.datetime("updated_at", { precision: 6 }).defaultTo(knex.fn.now(6))
     })
 }
 

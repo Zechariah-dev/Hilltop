@@ -84,7 +84,10 @@ const BranchCtrl = {
         const errors = validationResult(req)
 
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() })
+            throw new BadRequestErrorWithPayload(
+                globalErrors.GLOBAL_ERR_VALIDATION_ERROR,
+                { errors: errors.array() }
+            )
         }
 
         let branch = await Branch.query()

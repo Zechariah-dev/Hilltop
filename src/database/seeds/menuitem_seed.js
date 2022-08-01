@@ -11,15 +11,17 @@ exports.seed = async function (knex) {
             category: "salad",
             description:
                 "delicious apple salad made from the best apples produced",
-            ingredients: [
+            ingredients: JSON.stringify([
                 "Honeycrisp Apple",
                 "celery",
                 "grapes",
                 "pecans",
                 "cranberries",
                 "mayonnaise",
-            ],
+            ]),
+            currency: "NGN",
             created_by: 1,
+            id: 1,
         },
     ])
 }
