@@ -25,7 +25,7 @@ router.put(
 
 router.delete(
     "/:id",
-    [auth, rbac(["manager", "chef"])],
+    [authorization, rbac(["manager", "chef"])],
     asyncHandler(MenuController.delete)
 )
 
