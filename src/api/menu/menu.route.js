@@ -19,7 +19,7 @@ router.get("/:id", asyncHandler(MenuController.fetchOne))
 
 router.put(
     "/:id",
-    [auth, rbac(["manager", "chef"])],
+    [authorization, rbac(["manager", "chef"])],
     asyncHandler(MenuController.update)
 )
 
