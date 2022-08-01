@@ -10,6 +10,7 @@ exports.up = function (knex) {
         table.string("currency").defaultTo("NGN")
         table.string("category")
         table.string("description")
+        table.json('ingredients')
         table.json("rating")
         table.integer("created_by")
         table.datetime("created_at", { precision: 6 }).defaultTo(knex.fn.now(6))

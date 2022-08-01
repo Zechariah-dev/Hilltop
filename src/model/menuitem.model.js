@@ -34,6 +34,10 @@ class MenuItem extends Model {
                         5: { type: "number", default: 0 },
                     },
                 },
+                ingredients: {
+                    type: "array",
+                    default: [],
+                },
                 status: { type: "string" },
                 currency: { type: "string" },
                 created_by: { type: "number" },
@@ -54,6 +58,10 @@ class MenuItem extends Model {
                 },
             },
         }
+    }
+
+    static findByName({ name }) {
+        return this.query().findOne({ name })
     }
 }
 
